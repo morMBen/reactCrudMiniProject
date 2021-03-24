@@ -3,20 +3,33 @@ const List = ({ apiList, removeItem }) => {
         if (apiList) {
             return apiList.map((e) => {
                 return (
-                    <li className="item" key={e.id}>
-                        <img className="ui avatar image" src="/images/avatar/small/helen.jpg" alt='DL'></img>
-                        <div className='content'>
-                            <p className="header">{e.artist}</p>
-                            <p>{e.songName}</p>
+                    <div className="four wide column" key={e.id}>
+                        <div className="ui link cards" >
+                            <div className="card">
+                                <div className="image">
+                                    <img src={e.img} alt='DL'></img>
+                                </div>
+                                <div className='content'>
+                                    <div className="header">
+                                        <p>{e.company}</p>
+                                    </div>
+                                    <div className="meta">Model: {e.modelName}
+                                    </div>
+                                    <div className="meta">Price: ${e.price}
+                                    </div>
+                                    <div className="description">
+                                        <button onClick={() => { removeItem(e.id) }}>delete</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button onClick={removeItem}>delete</button>
-                    </li>
+                    </div>
                 )
             })
         }
     }
     return (
-        <ul className="ui celled list">{insertList()}</ul >
+        <div className="ui grid container">{insertList()}</div >
     )
 }
 
